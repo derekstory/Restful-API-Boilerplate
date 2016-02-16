@@ -1,17 +1,11 @@
 var Backbone = require('backbone');
 var $ = require('jquery');
-var HomePage = require('./home');
 var TestPage = require('./api-test');
 
 var Router = Backbone.Router.extend({
 
     routes: {
-        '': 'index',
         'testing': 'testRoute'
-    },
-
-    index: function() {
-        this.loadView(new HomePage());
     },
 
     testRoute: function () {

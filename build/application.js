@@ -29118,13 +29118,37 @@ return jQuery;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],25:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+var TestPage = require('./api-test');
+
+var Router = Backbone.Router.extend({
+
+    routes: {
+        'testing': 'testRoute'
+    },
+
+    testRoute: function () {
+        this.loadView(new TestPage());
+    },
+
+    loadView : function(view) {
+        this.view && this.view.remove();
+		this.view = view;
+	}
+
+});
+
+module.exports = Router;
+
+},{"./api-test":27,"backbone":1,"jquery":23}],26:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h1>Testing this out mofo</h1>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":22}],26:[function(require,module,exports){
+},{"hbsfy/runtime":22}],27:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('lodash');
 var $ = require('jquery');
@@ -29147,16 +29171,17 @@ var AppView = Backbone.View.extend({
 
 module.exports = AppView;
 
-},{"./api-test.handlebars":25,"backbone":1,"jquery":23,"lodash":24}],27:[function(require,module,exports){
+},{"./api-test.handlebars":26,"backbone":1,"jquery":23,"lodash":24}],28:[function(require,module,exports){
 
 var Backbone = require('backbone');
 var $ = require('jquery');
-var Router = require('./router');
-
+var HomeRouter = require('./home/home-router');
+var ApiTestRouter = require('./api-test/api-test-router')
 var AppRouter = Backbone.Router.extend({
 
     initialize: function() {
-        new Router();
+        new HomeRouter();
+        new ApiTestRouter();
     },
 
 });
@@ -29164,14 +29189,38 @@ var AppRouter = Backbone.Router.extend({
 
 module.exports = AppRouter;
 
-},{"./router":33,"backbone":1,"jquery":23}],28:[function(require,module,exports){
+},{"./api-test/api-test-router":25,"./home/home-router":29,"backbone":1,"jquery":23}],29:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+var HomePage = require('./home');
+
+var Router = Backbone.Router.extend({
+
+    routes: {
+        '': 'index'
+    },
+
+    index: function() {
+        this.loadView(new HomePage());
+    },
+
+    loadView : function(view) {
+        this.view && this.view.remove();
+		this.view = view;
+	}
+
+});
+
+module.exports = Router;
+
+},{"./home":31,"backbone":1,"jquery":23}],30:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h1>Boilerplate</h1>\n<ul>\n	<li>Node.js</li>\n	<li>MongoDB</li>\n	<li>Express</li>\n	<li>Node-Restful</li>\n	<li>Backbone.js</li>\n	<li>Handlebars</li>\n	<li>SASS</li>\n	<li>Jquery</li>\n	<li>Lodash</li>\n	<li>Grunt</li>\n</ul>\n<h3>Provided by: Derek Story</h3>\n<h5><a href=\"http://derekstory.com\">DerekStory.com</a></h5>\n<h5><a href=\"https://github.com/derekstory\">Github</a></h5>\n<h5><a href=\"http://stackoverflow.com/users/2479962/dwreck08?tab=profile\">StackOverflow</a></h5>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":22}],29:[function(require,module,exports){
+},{"hbsfy/runtime":22}],31:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('lodash');
 var $ = require('jquery');
@@ -29195,14 +29244,14 @@ var AppView = Backbone.View.extend({
 
 module.exports = AppView;
 
-},{"./home.handlebars":28,"backbone":1,"jquery":23,"lodash":24}],30:[function(require,module,exports){
+},{"./home.handlebars":30,"backbone":1,"jquery":23,"lodash":24}],32:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id=\"js-boilerplate-app\"></div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":22}],31:[function(require,module,exports){
+},{"hbsfy/runtime":22}],33:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -29213,7 +29262,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + "\n</body>\n</html>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":22}],32:[function(require,module,exports){
+},{"hbsfy/runtime":22}],34:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('lodash');
 var $ = require('jquery');
@@ -29236,37 +29285,7 @@ var AppView = Backbone.View.extend({
 
 module.exports = AppView;
 
-},{"./main.handlebars":31,"backbone":1,"jquery":23,"lodash":24}],33:[function(require,module,exports){
-var Backbone = require('backbone');
-var $ = require('jquery');
-var HomePage = require('./home');
-var TestPage = require('./api-test');
-
-var Router = Backbone.Router.extend({
-
-    routes: {
-        '': 'index',
-        'testing': 'testRoute'
-    },
-
-    index: function() {
-        this.loadView(new HomePage());
-    },
-
-    testRoute: function () {
-        this.loadView(new TestPage());
-    },
-
-    loadView : function(view) {
-        this.view && this.view.remove();
-		this.view = view;
-	}
-
-});
-
-module.exports = Router;
-
-},{"./api-test":26,"./home":29,"backbone":1,"jquery":23}],34:[function(require,module,exports){
+},{"./main.handlebars":33,"backbone":1,"jquery":23,"lodash":24}],35:[function(require,module,exports){
 
 var Backbone = require('backbone');
 var $ = require('jquery');
@@ -29281,6 +29300,6 @@ $(function() {
 
 });
 
-},{"./app-router":27,"backbone":1,"jquery":23}]},{},[26,27,29,32,33,34,25,28,30,31]);
+},{"./app-router":28,"backbone":1,"jquery":23}]},{},[25,27,28,29,31,34,35,26,30,32,33]);
 
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
