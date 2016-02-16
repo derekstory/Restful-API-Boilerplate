@@ -8,17 +8,8 @@
 #### Install the dependencies
 * npm install
 
-#### Make a directory to store MongoDB data
-* mkdir /tmp/data
-
-#### Start the DB
-* mongod --dbpath /tmp/data
-
-#### Start Grunt Watch
-* grunt watch
-
-#### Start the server
-* node server.js
+#### Use Grunt to start MongoDB, Server and Grunt
+* grunt server
 
 #### Access localhost
 http://localhost:3000
@@ -28,8 +19,6 @@ http://localhost:3000/api/test-model
 
 #### Based off: Building a RESTful API in 5 Minutes
 [https://www.youtube.com/watch?v=p-x6WdwaJco](https://www.youtube.com/watch?v=p-x6WdwaJco)
-
-
 
 ## TROUBLESHOOTING
 
