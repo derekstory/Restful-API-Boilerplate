@@ -8,13 +8,12 @@ var AppView = Backbone.View.extend({
     className: 'test-page',
 
     initialize: function() {
-        $('body').html(this.el);
-        this.render();
+
     },
 
     render: function(){
         this.$el.empty().append(template());
-        $('#js-boilerplate-app').html('testing');
+        return this;
     }
 });
 

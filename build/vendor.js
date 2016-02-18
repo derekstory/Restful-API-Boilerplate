@@ -29129,13 +29129,8 @@ var Router = Backbone.Router.extend({
     },
 
     testRoute: function () {
-        this.loadView(new TestPage());
+        new TestPage({ el: $('#js-boilerplate-app') }).render();
     },
-
-    loadView : function(view) {
-        this.view && this.view.remove();
-		this.view = view;
-	}
 
 });
 
@@ -29159,24 +29154,23 @@ var AppView = Backbone.View.extend({
     className: 'test-page',
 
     initialize: function() {
-        $('body').html(this.el);
-        this.render();
+
     },
 
     render: function(){
         this.$el.empty().append(template());
-        $('#js-boilerplate-app').html('testing');
+        return this;
     }
 });
 
 module.exports = AppView;
 
 },{"./api-test.handlebars":26,"backbone":1,"jquery":23,"lodash":24}],28:[function(require,module,exports){
-
 var Backbone = require('backbone');
 var $ = require('jquery');
 var HomeRouter = require('./home/home-router');
-var ApiTestRouter = require('./api-test/api-test-router')
+var ApiTestRouter = require('./api-test/api-test-router');
+
 var AppRouter = Backbone.Router.extend({
 
     initialize: function() {
@@ -29197,17 +29191,12 @@ var HomePage = require('./home');
 var Router = Backbone.Router.extend({
 
     routes: {
-        '': 'index'
+        '': 'homePage'
     },
 
-    index: function() {
-        this.loadView(new HomePage());
+    homePage: function() {
+        new HomePage({ el: $('#js-boilerplate-app') }).render();
     },
-
-    loadView : function(view) {
-        this.view && this.view.remove();
-		this.view = view;
-	}
 
 });
 
@@ -29217,7 +29206,7 @@ module.exports = Router;
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h1>Boilerplate</h1>\n<ul>\n	<li>Node.js</li>\n	<li>MongoDB</li>\n	<li>Express</li>\n	<li>Node-Restful</li>\n	<li>Backbone.js</li>\n	<li>Handlebars</li>\n	<li>SASS</li>\n	<li>Jquery</li>\n	<li>Lodash</li>\n	<li>Grunt</li>\n</ul>\n<h3>Provided by: Derek Story</h3>\n<h5><a href=\"http://derekstory.com\">DerekStory.com</a></h5>\n<h5><a href=\"https://github.com/derekstory\">Github</a></h5>\n<h5><a href=\"http://stackoverflow.com/users/2479962/dwreck08?tab=profile\">StackOverflow</a></h5>\n";
+    return "<section class=\"home-page\">\n	<a href=\"#testing\">\n		<h1>Boilerplate</h1>\n	</a>\n	<ul>\n		<li class=\"link-me\" data-href=\"#testing\">Node.js</li>\n		<li>MongoDB</li>\n		<li>Express</li>\n		<li>Node-Restful</li>\n		<li>Backbone.js</li>\n		<li>Handlebars</li>\n		<li>SASS</li>\n		<li>Jquery</li>\n		<li>Lodash</li>\n		<li>Grunt</li>\n	</ul>\n	<h3>Provided by: Derek Story</h3>\n	<h5><a href=\"http://derekstory.com\">DerekStory.com</a></h5>\n	<h5><a href=\"https://github.com/derekstory\">Github</a></h5>\n	<h5><a href=\"http://stackoverflow.com/users/2479962/dwreck08?tab=profile\">StackOverflow</a></h5>\n</section>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":22}],31:[function(require,module,exports){
@@ -29228,12 +29217,8 @@ var template = require('./home.handlebars');
 
 var AppView = Backbone.View.extend({
 
-    tagName: 'section',
-
-    className: 'home-page',
-
     initialize: function() {
-        $('body').html(this.el);
+        $('#js-boilerplate-app').html(this.el);
         this.render();
     },
 
@@ -29286,17 +29271,27 @@ var AppView = Backbone.View.extend({
 module.exports = AppView;
 
 },{"./main.handlebars":33,"backbone":1,"jquery":23,"lodash":24}],35:[function(require,module,exports){
-
 var Backbone = require('backbone');
 var $ = require('jquery');
 var AppRouter = require('./app-router');
 
 $(function() {
 
-    var conductor = new AppRouter();
+    var appRouter = new AppRouter();
     Backbone.history.start();
-    // This allows urls to be accessed directly
-    conductor.navigate(location.hash, { trigger: true, replace: true });
+    // Allows urls to be accessed directly
+    appRouter.navigate(location.hash, { trigger: true, replace: true });
+
+    /*
+    // Make elements act as links without wrapping in an anchor tag
+    // 1. give class name ".link-me" 2.
+    // 2. app " data-href="urlPath" "
+    // example: <span class="link-me" data-href="#linkhere">Linked Text</span>
+    */
+    $('body').on('click', '.link-me', function() {
+        var linkedUrl = $(this).data('href');
+        appRouter.navigate(linkedUrl, { trigger: true });
+    });
 
 });
 

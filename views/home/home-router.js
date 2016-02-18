@@ -5,17 +5,12 @@ var HomePage = require('./home');
 var Router = Backbone.Router.extend({
 
     routes: {
-        '': 'index'
+        '': 'homePage'
     },
 
-    index: function() {
-        this.loadView(new HomePage());
+    homePage: function() {
+        new HomePage({ el: $('#js-boilerplate-app') }).render();
     },
-
-    loadView : function(view) {
-        this.view && this.view.remove();
-		this.view = view;
-	}
 
 });
 

@@ -5,12 +5,8 @@ var template = require('./home.handlebars');
 
 var AppView = Backbone.View.extend({
 
-    tagName: 'section',
-
-    className: 'home-page',
-
     initialize: function() {
-        $('body').html(this.el);
+        $('#js-boilerplate-app').html(this.el);
         this.render();
     },
 

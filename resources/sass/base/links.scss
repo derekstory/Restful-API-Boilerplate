@@ -1,0 +1,10 @@
+//
+/* .link-me */
+//
+// Make elements act as links without wrapping in an anchor tag
+// 1. give class name ".link-me" 2.
+// 2. app " data-href="urlPath" "
+// example: <span class="link-me" data-href="#linkhere">Linked Text</span>
+.link-me {
+    cursor: pointer;
+}

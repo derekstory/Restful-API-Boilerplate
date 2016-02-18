@@ -9,13 +9,8 @@ var Router = Backbone.Router.extend({
     },
 
     testRoute: function () {
-        this.loadView(new TestPage());
+        new TestPage({ el: $('#js-boilerplate-app') }).render();
     },
-
-    loadView : function(view) {
-        this.view && this.view.remove();
-		this.view = view;
-	}
 
 });
 

@@ -41,6 +41,10 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/* .link-me */
+.link-me {
+  cursor: pointer; }
+
 .home-page {
   color: #555555;
   text-align: center; }
