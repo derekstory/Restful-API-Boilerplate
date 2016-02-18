@@ -7,12 +7,12 @@ var AppView = Backbone.View.extend({
 
     initialize: function() {
         $('#js-boilerplate-app').html(this.el);
-        this.render();
     },
 
     render: function(){
         this.$el.empty().append(template());
     }
+    
 });
 
 module.exports = AppView;

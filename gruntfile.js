@@ -11,7 +11,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: ['views/**/*.js', '**/*.handlebars'],
-                tasks: ['concurrent:browserify', 'concat']
+                tasks: ['concurrent:browserify']
             },
             css: {
                 files: ['resources/**/*.scss'],
@@ -28,25 +28,11 @@ module.exports = function(grunt) {
 
         // Allow for require(template) usage.
         browserify: {
-            vendor: {
+            application: {
                 src: ['views/**/*.js', 'views/**/*.handlebars'],
-                dest: 'build/vendor.js',
+                dest: 'build/application.js',
                 options: {
                     transform: ['hbsfy']
-                }
-            },
-            app: {
-                /*
-                files: {
-                    'build/app.js': ['client/src/main.js']
-                },
-                */
-                handlebars: {
-                src: 'views/**/*.handlebars',
-                dest: 'build/app.js'
-                },
-                options: {
-                    transform: ['hbsfy'],
                 }
             }
         },
@@ -63,16 +49,11 @@ module.exports = function(grunt) {
             }
         },
 
-        // Combine vendor/app builds into one file
-        concat: {
-            'build/application.js': ['build/vendor.js', 'build/app.js'],
-        },
-
         // Compress JS into a .min.js file for production
         uglify: {
             my_target: {
                 files: {
-                    'build/application.min.js': 'build/application.js'
+                    'public/js/application.min.js': 'build/application.js'
                 }
             }
         },
@@ -127,17 +108,17 @@ module.exports = function(grunt) {
                 }
             },
             browserify: {
-                tasks: ['browserify:app', 'browserify:vendor'],
+                tasks: ['browserify:application'],
             }
         }
 
     });
 
-    // Build the Production (needs work)
-    grunt.registerTask('build:prod', ['sass', 'concurrent:browserify', 'concat', 'uglify', 'imagemin', 'delete_sync']);
+    // Build the Production (needs work) by "grunt build:prod"
+    grunt.registerTask('build:prod', ['sass', 'concurrent:browserify', 'uglify', 'imagemin', 'delete_sync']);
 
     // Start server and development by command "grunt server"
-    grunt.registerTask('build:dev', ['sass', 'concurrent:browserify', 'concat', 'imagemin', 'delete_sync']);
+    grunt.registerTask('build:dev', ['sass', 'concurrent:browserify', 'imagemin', 'delete_sync']);
     grunt.registerTask('server', ['build:dev', 'concurrent:dev']);
 
 };
