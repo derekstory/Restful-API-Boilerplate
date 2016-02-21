@@ -8,7 +8,6 @@ var router = express.Router();
 var TestModel = require('../models/test-model');
 
 // Routes
-
 TestModel.methods(['get', 'put', 'post', 'delete']);
 TestModel.register(router, '/test-model');
 

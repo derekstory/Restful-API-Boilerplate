@@ -6,11 +6,9 @@ var mongoose = restful.mongoose;
 var app = express();
 
 // Schema
-var productSchema = new mongoose.Schema({
-    name: String,
-    sku: String,
-    price: Number
+var nameSchema = new mongoose.Schema({
+    name: String
 });
 
 // Return model
-module.exports = restful.model('TestModel', productSchema);
+module.exports = restful.model('TestModel', nameSchema);

@@ -20,4 +20,12 @@ $(function() {
         appRouter.navigate(linkedUrl, { trigger: true });
     });
 
+    /*
+    // Prevent Default
+    */
+    $('body').on('click', 'button', function(e) {
+        e.preventDefault();
+    });
+
+
 });

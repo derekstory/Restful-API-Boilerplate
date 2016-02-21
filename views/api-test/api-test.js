@@ -5,8 +5,6 @@ var template = require('./api-test.handlebars');
 
 var AppView = Backbone.View.extend({
 
-    className: 'test-page',
-
     initialize: function() {
 
     },
