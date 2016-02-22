@@ -5,10 +5,7 @@ var template = require('./main.handlebars');
 
 var AppView = Backbone.View.extend({
 
-	tagName: 'body',
-
 	initialize: function() {
-		$('body').html(this.el);
 		this.render();
 	},
 
