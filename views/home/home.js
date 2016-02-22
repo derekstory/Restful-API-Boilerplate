@@ -28,13 +28,16 @@ var AppView = Backbone.View.extend({
 	},
 
 	postTest: function(){
-		var value = $('input[name="test"]').val();
+		var input = $('input[name="test"]');
+		var value = input.val();
 		var name  = new TestModel({ "name": value });
 		var home  = this;
 
+		input.val("");
+
 		name.save(null , {
 			success: function (newModel) {
-				home.$('.name-list').append('<li data-id="' + newModel.attributes.name + '">' + newModel.attributes.name + '</li>');
+				home.$('.name-list').append('<li><a href="#testing/' + newModel.attributes._id + '">' + newModel.attributes.name + '</a></li>');
 			}
 		});
 	}
