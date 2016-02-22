@@ -1,4 +1,5 @@
 <section class="home-page">
+
 	<a href="#testing">
 		<h1>Boilerplate</h1>
 	</a>
@@ -9,8 +10,15 @@
 		<button>Submit</button>
 	</form>
 
+	<ul class="name-list">
+		{{#each names}}
+		<li data-id="{{_id}}">{{name}}</li>
+		{{/each}}
+	</ul>
+
 	<h3>Provided by: Derek Story</h3>
 	<h5><a href="http://derekstory.com">DerekStory.com</a></h5>
 	<h5><a href="https://github.com/derekstory">Github</a></h5>
 	<h5><a href="http://stackoverflow.com/users/2479962/dwreck08?tab=profile">StackOverflow</a></h5>
+	
 </section>

@@ -1,16 +1,18 @@
 var Backbone = require('backbone');
-var $ = require('jquery');
+var $        = require('jquery');
 var HomePage = require('./home');
 
-var Router = Backbone.Router.extend({
+var Router   = Backbone.Router.extend({
 
-    routes: {
-        '': 'homePage'
-    },
+	routes: {
+		'': 'homePage'
+	},
 
-    homePage: function() {
-        new HomePage({ el: $('#js-boilerplate-app') }).render();
-    },
+	homePage: function() {
+		$.get('/api/test-model', function(data) {
+			new HomePage({ el: $('#js-boilerplate-app'), data: data }).render();
+		});
+	}
 
 });
 

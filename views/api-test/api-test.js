@@ -1,18 +1,18 @@
 var Backbone = require('backbone');
-var _ = require('lodash');
-var $ = require('jquery');
+var _        = require('lodash');
+var $        = require('jquery');
 var template = require('./api-test.handlebars');
 
-var AppView = Backbone.View.extend({
+var AppView  = Backbone.View.extend({
 
-    initialize: function() {
+	initialize: function() {
 
-    },
+	},
 
-    render: function(){
-        this.$el.empty().append(template());
-        return this;
-    }
+	render: function(){
+		this.$el.empty().append(template());
+		return this;
+	}
 });
 
 module.exports = AppView;
