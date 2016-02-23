@@ -15,7 +15,8 @@ var TestCollection = Backbone.Collection.extend({
 var AppView = Backbone.View.extend({
 
 	events: {
-		'click button': 'postTest'
+		'click button': 'postTest',
+		'click .delete': 'deleteItem'
 	},
 
 	initialize: function(options) {
@@ -37,9 +38,17 @@ var AppView = Backbone.View.extend({
 
 		name.save(null , {
 			success: function (newModel) {
-				home.$('.name-list').append('<li><a href="#testing/' + newModel.attributes._id + '">' + newModel.attributes.name + '</a></li>');
+				home.$('.name-list').append('<li data-id="' + newModel.attributes._id + '"><span class="link-me" data-href="#testing/' + newModel.attributes._id + '">' + newModel.attributes.name + '</span><span class="delete">X</span></li>');
 			}
 		});
+	},
+
+	deleteItem: function(e) {
+		var item = $(e.currentTarget).closest('li');
+		var itemId = item.data('id');
+		$.delete('/api/test-model/' + itemId, function() {
+			item.remove();
+		}.bind(this));
 	}
 
 });
