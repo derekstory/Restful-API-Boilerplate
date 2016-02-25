@@ -38,7 +38,7 @@ var AppView = Backbone.View.extend({
 
 		name.save(null , {
 			success: function (newModel) {
-				home.$('.name-list').append('<li data-id="' + newModel.attributes._id + '"><span class="link-me" data-href="#testing/' + newModel.attributes._id + '">' + newModel.attributes.name + '</span><span class="delete">X</span></li>');
+				home.$('.name-list').append('<li data-id="' + newModel.attributes._id + '"><span class="link-me" data-href="#testing/' + newModel.attributes._id + '">' + newModel.attributes.name + '</span> <span class="delete">X</span></li>');
 			}
 		});
 	},
