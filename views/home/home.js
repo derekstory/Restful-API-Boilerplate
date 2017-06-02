@@ -3,6 +3,10 @@ var _        = require('lodash');
 var $        = require('jquery');
 var template = require('./home.handlebars');
 
+var TestModel = Backbone.Model.extend({
+	urlRoot: '/api/test-model'
+});
+
 var AppView = Backbone.View.extend({
 
 	events: {
