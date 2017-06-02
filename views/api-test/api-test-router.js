@@ -1,6 +1,7 @@
 var Backbone = require('backbone');
 var $        = require('jquery');
 var TestPage = require('./api-test');
+var sectionRender = require('../section-render');
 
 var Router = Backbone.Router.extend({
 
@@ -10,7 +11,7 @@ var Router = Backbone.Router.extend({
 
 	testRoute: function (id) {
 		$.get('/api/test-model?_id=' + id, function(data) {
-			new TestPage({ el: $('#js-boilerplate-app'), data: data }).render();
+			sectionRender.main(new TestPage({ data: data }));
 		});
 	},
 

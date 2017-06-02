@@ -3,15 +3,6 @@ var _        = require('lodash');
 var $        = require('jquery');
 var template = require('./home.handlebars');
 
-var TestModel = Backbone.Model.extend({
-	urlRoot: '/api/test-model'
-});
-
-var TestCollection = Backbone.Collection.extend({
-	model: TestModel,
-	url: '/api/test-model'
-});
-
 var AppView = Backbone.View.extend({
 
 	events: {
@@ -26,6 +17,7 @@ var AppView = Backbone.View.extend({
 
 	render: function(){
 		this.$el.empty().append(template({ names: this.options.data }));
+		return this;
 	},
 
 	postTest: function(){
@@ -34,7 +26,8 @@ var AppView = Backbone.View.extend({
 		var name  = new TestModel({ "name": value });
 		var home  = this;
 
-		input.val("");
+		// Clear
+		input.val('');
 
 		name.save(null , {
 			success: function (newModel) {
