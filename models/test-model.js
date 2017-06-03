@@ -1,6 +1,6 @@
 // Dependencies
-var express  = require('express');
-var restful  = require('node-restful');
+var express = require('express');
+var restful = require('node-restful');
 var mongoose = restful.mongoose;
 
 var app = express();

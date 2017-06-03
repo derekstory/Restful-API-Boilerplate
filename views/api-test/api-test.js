@@ -14,6 +14,12 @@ var AppView  = Backbone.View.extend({
 			name: this.options.data[0].name
 		}));
 		return this;
+	},
+
+	remove: function() {
+		console.log('testing');
+		this.remove();
+		Backbone.View.prototype.remove.call(this);
 	}
 });
 

@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-var $        = require('jquery');
+var $ = require('jquery');
 var TestPage = require('./api-test');
 var sectionRender = require('../section-render');
 

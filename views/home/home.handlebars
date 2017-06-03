@@ -1,25 +1,21 @@
-<section class="home-page">
+<h1>Boilerplate</h1>
 
-	<h1>Boilerplate</h1>
+<form>
+	<label>Test API</label>
+	<input type="text" name="test">
+	<button>Submit</button>
+</form>
 
-	<form>
-		<label>Test API</label>
-		<input type="text" name="test">
-		<button>Submit</button>
-	</form>
+<ul class="name-list">
+	{{#each names}}
+	<li data-id="{{_id}}">
+		<span class="link-me" data-href="#testing/{{_id}}">{{name}}</span>
+		<span class="delete">X</span>
+	</li>
+	{{/each}}
+</ul>
 
-	<ul class="name-list">
-		{{#each names}}
-			<li data-id="{{_id}}">
-				<span class="link-me" data-href="#testing/{{_id}}">{{name}}</span>
-				<span class="delete">X</span>
-			</li>
-		{{/each}}
-	</ul>
-
-	<h3>Provided by: Derek Story</h3>
-	<h5><a href="http://derekstory.com">DerekStory.com</a></h5>
-	<h5><a href="https://github.com/derekstory">Github</a></h5>
-	<h5><a href="http://stackoverflow.com/users/2479962/dwreck08?tab=profile">StackOverflow</a></h5>
-
-</section>
+<h3>Provided by: Derek Story</h3>
+<h5><a href="http://derekstory.com">DerekStory.com</a></h5>
+<h5><a href="https://github.com/derekstory">Github</a></h5>
+<h5><a href="http://stackoverflow.com/users/2479962/dwreck08?tab=profile">StackOverflow</a></h5>

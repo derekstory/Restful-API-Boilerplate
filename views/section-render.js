@@ -13,14 +13,21 @@ _.extend(Section.prototype, Backbone.Events, {
 	},
 
 	section: function(view) {
-		view.render();
-		this.el().html(view.$el[0]);
+		// Remove the previous view
+		this.el().empty();
+
+		// Render the view and attach the events that were dropped on `.empty()`
+		view.render().delegateEvents();
+
+		// Show the view
+		this.el().append(view.el);
 	}
+
 });
 
 var sectionRender = {
 
-	_main: new Section({ el: '#js-boilerplate-app' }),
+	_main: new Section({ el: '.main-content' }),
 
 	main: function(view) {
 		return this._main.section(view);

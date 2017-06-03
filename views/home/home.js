@@ -1,6 +1,6 @@
 var Backbone = require('backbone');
-var _        = require('lodash');
-var $        = require('jquery');
+var _ = require('lodash');
+var $ = require('jquery');
 var template = require('./home.handlebars');
 
 var TestModel = Backbone.Model.extend({
@@ -9,6 +9,10 @@ var TestModel = Backbone.Model.extend({
 
 var AppView = Backbone.View.extend({
 
+	tagName: 'section',
+
+	className: 'home-page',
+
 	events: {
 		'click button': 'postTest',
 		'click .delete': 'deleteItem'
@@ -16,7 +20,7 @@ var AppView = Backbone.View.extend({
 
 	initialize: function(options) {
 		this.options = options;
-		$('#js-boilerplate-app').html(this.el);
+		$('.main-content').html(this.el);
 	},
 
 	render: function(){
@@ -28,14 +32,14 @@ var AppView = Backbone.View.extend({
 		var input = $('input[name="test"]');
 		var value = input.val();
 		var name  = new TestModel({ "name": value });
-		var home  = this;
+		var $this  = this;
 
 		// Clear
 		input.val('');
 
 		name.save(null , {
 			success: function (newModel) {
-				home.$('.name-list').append('<li data-id="' + newModel.attributes._id + '"><span class="link-me" data-href="#testing/' + newModel.attributes._id + '">' + newModel.attributes.name + '</span> <span class="delete">X</span></li>');
+				$this.$('.name-list').append('<li data-id="' + newModel.attributes._id + '"><span class="link-me" data-href="#testing/' + newModel.attributes._id + '">' + newModel.attributes.name + '</span> <span class="delete">X</span></li>');
 			}
 		});
 	},
