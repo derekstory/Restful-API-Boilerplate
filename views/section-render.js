@@ -29,9 +29,15 @@ var sectionRender = {
 
 	_main: new Section({ el: '.main-content' }),
 
+	_nav: new Section({ el: '.nav-bar' }),
+
 	main: function(view) {
 		return this._main.section(view);
-	}
+	},
+
+	nav: function(view) {
+		return this._nav.section(view);
+	},
 
 };
 

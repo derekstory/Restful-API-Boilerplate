@@ -1,5 +1,5 @@
-var Backbone  = require('backbone');
-var $         = require('jquery');
+var Backbone = require('backbone');
+var $ = require('jquery');
 var AppRouter = require('./app-router');
 
 $(function() {

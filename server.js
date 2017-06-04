@@ -20,7 +20,7 @@ app.use(express.static(__dirname + '/build'));
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({
 	defaultLayout: 'main',
-	layoutsDir: app.get('views') + '/layouts'
+	layoutsDir: app.get('views')
 }));
 
 

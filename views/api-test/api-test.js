@@ -1,9 +1,11 @@
 var Backbone = require('backbone');
-var _        = require('lodash');
-var $        = require('jquery');
+var _ = require('lodash');
+var $ = require('jquery');
 var template = require('./api-test.handlebars');
 
-var AppView  = Backbone.View.extend({
+var AppView = Backbone.View.extend({
+
+	className: 'api-test',
 
 	initialize: function(options) {
 		this.options = options;
@@ -14,13 +16,8 @@ var AppView  = Backbone.View.extend({
 			name: this.options.data[0].name
 		}));
 		return this;
-	},
-
-	remove: function() {
-		console.log('testing');
-		this.remove();
-		Backbone.View.prototype.remove.call(this);
 	}
+
 });
 
 module.exports = AppView;
