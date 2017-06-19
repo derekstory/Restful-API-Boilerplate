@@ -20,7 +20,6 @@ var AppView = Backbone.View.extend({
 
 	initialize: function(options) {
 		this.options = options;
-		$('.main-content').html(this.el);
 	},
 
 	render: function(){
@@ -34,19 +33,26 @@ var AppView = Backbone.View.extend({
 		var name  = new TestModel({ "name": value });
 		var $this  = this;
 
-		// Clear
-		input.val('');
+		if(input.val()) {
+			name.save(null , {
+				success: function (newModel) {
+					input.val(''); // Clear field
 
-		name.save(null , {
-			success: function (newModel) {
-				$this.$('.name-list').append('<li data-id="' + newModel.attributes._id + '"><span class="link-me" data-href="#testing/' + newModel.attributes._id + '">' + newModel.attributes.name + '</span> <span class="delete">X</span></li>');
-			}
-		});
+					var html = '<li data-id="' + newModel.attributes._id + '">';
+						html += '<span data-href="#testing/' + newModel.attributes._id + '">';
+						html += newModel.attributes.name;
+						html += '</span> <span class="delete">X</span></li>';
+
+					$this.$('.name-list').append(html);
+				}
+			});
+		}
 	},
 
 	deleteItem: function(e) {
 		var item = $(e.currentTarget).closest('li');
 		var itemId = item.data('id');
+
 		$.delete('/api/test-model/' + itemId, function() {
 			item.remove();
 		}.bind(this));

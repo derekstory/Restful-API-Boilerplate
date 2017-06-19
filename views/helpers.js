@@ -8,11 +8,11 @@ $(function() {
 
 	/*
 	// Make elements act as links without wrapping in an anchor tag
-	// 1. give class name ".link-me" 2.
+	// 1. give data-attribute "data-href"
 	// 2. app " data-href="urlPath" "
-	// example: <span class="link-me" data-href="#linkhere">Linked Text</span>
+	// example: <spandata-href="#linkhere">Linked Text</span>
 	*/
-	$('body').on('click', '.link-me', function() {
+	$('body').on('click', '[data-href]', function() {
 		var linkedUrl = $(this).data('href');
 		appRouter.navigate(linkedUrl, { trigger: true });
 	});

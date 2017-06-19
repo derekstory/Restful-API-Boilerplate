@@ -13,6 +13,8 @@ _.extend(Section.prototype, Backbone.Events, {
 	},
 
 	section: function(view) {
+		Backbone.Events.trigger('newSection', view.options.section);
+
 		// Remove the previous view
 		this.el().empty();
 
@@ -29,15 +31,9 @@ var sectionRender = {
 
 	_main: new Section({ el: '.main-content' }),
 
-	_nav: new Section({ el: '.nav-bar' }),
-
 	main: function(view) {
 		return this._main.section(view);
-	},
-
-	nav: function(view) {
-		return this._nav.section(view);
-	},
+	}
 
 };
 
