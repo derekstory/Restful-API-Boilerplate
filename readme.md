@@ -5,12 +5,12 @@
 * Node/ NPM
 * MySQL
 
-###### Import the testing.sql database into MySQL
+###### 1. Import the testing.sql database into MySQL
 
-###### Install the dependencies
+###### 2. Install the dependencies
 `npm install`
 
-###### Start server and listeners
+###### 3. Start server and listeners
 `grunt server`
 
 ###### Access localhost
