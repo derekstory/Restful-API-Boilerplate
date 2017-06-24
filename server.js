@@ -12,7 +12,6 @@ app.use(bodyParser.json());
 
 // MYSQL
 var mysql = require('mysql');
-// var myConnection = require('express-myconnection');
 var dbOptions = {
 	host: 'localhost',
 	user: 'root',

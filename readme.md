@@ -1,14 +1,16 @@
 ## JSON API BoilerPlate
 #### Node.js, Express, MySQL, Backbone, Handlebars, SASS
 
-######Requirements
+###### Requirements
 * Node/ NPM
 * MySQL
+
+###### Import the testing.sql database into MySQL
 
 ###### Install the dependencies
 `npm install`
 
-###### Use Grunt to start MongoDB, Server and Grunt
+###### Start server and listeners
 `grunt server`
 
 ###### Access localhost
