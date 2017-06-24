@@ -10,7 +10,7 @@ var Router = Backbone.Router.extend({
 	},
 
 	testRoute: function (id) {
-		$.get('/api/test-model?_id=' + id, function(data) {
+		$.get('api/testitem/?id=' + id, function(data) {
 			sectionRender.main(new TestPage({ data: data, section: 'testpage' }));
 		});
 	},

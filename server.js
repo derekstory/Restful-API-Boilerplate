@@ -1,20 +1,39 @@
 // Dependencies
 var express = require('express');
 var exphbs  = require('express-handlebars');
-var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-// MongoDB
-mongoose.connect('mongodb://localhost');
 
 // Express
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+// MYSQL
+var mysql = require('mysql');
+// var myConnection = require('express-myconnection');
+var dbOptions = {
+	host: 'localhost',
+	user: 'root',
+	password: 'password',
+	database: 'testing'
+};
+var connection = mysql.createConnection(dbOptions);
+
+connection.connect(function(err) {
+	if(err) {
+		console.log('Error connecting to MySql');
+	} else {
+		console.log('Connected to Mysql');
+	}
+});
+
+
 // Load the public directory files
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/build'));
+
 
 // Express - Handlebars
 app.set('view engine', 'handlebars');
@@ -30,7 +49,7 @@ app.get('/', function (req, res) {
 
 
 // Routes
-app.use('/api', require('./routes/api'));
+app.use('/api', require('./routes/api')({ db : connection }));
 
 // Start server
 app.listen(3000);

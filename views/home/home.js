@@ -4,7 +4,7 @@ var $ = require('jquery');
 var template = require('./home.handlebars');
 
 var TestModel = Backbone.Model.extend({
-	urlRoot: '/api/test-model'
+	urlRoot: '/api/testmodel'
 });
 
 var AppView = Backbone.View.extend({
@@ -37,12 +37,10 @@ var AppView = Backbone.View.extend({
 			name.save(null , {
 				success: function (newModel) {
 					input.val(''); // Clear field
-
-					var html = '<li data-id="' + newModel.attributes._id + '">';
-						html += '<span data-href="#testing/' + newModel.attributes._id + '">';
+					var html = '<li data-id="' + newModel.attributes.insertId + '">';
+						html += '<span data-href="#testing/' + newModel.attributes.insertId + '">';
 						html += newModel.attributes.name;
 						html += '</span> <span class="delete">X</span></li>';
-
 					$this.$('.name-list').append(html);
 				}
 			});
@@ -53,7 +51,7 @@ var AppView = Backbone.View.extend({
 		var item = $(e.currentTarget).closest('li');
 		var itemId = item.data('id');
 
-		$.delete('/api/test-model/' + itemId, function() {
+		$.delete('/api/testmodel/?id=' + itemId, function(e, d) {
 			item.remove();
 		}.bind(this));
 	}
