@@ -6,7 +6,7 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.7.10)
-# Database: testing
+# Database: api
 # Generation Time: 2017-06-24 17:31:03 +0000
 # ************************************************************
 

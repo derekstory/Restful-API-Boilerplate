@@ -10,7 +10,7 @@ $(function() {
 	// Make elements act as links without wrapping in an anchor tag
 	// 1. give data-attribute "data-href"
 	// 2. app " data-href="urlPath" "
-	// example: <spandata-href="#linkhere">Linked Text</span>
+	// example: <span data-href="#linkhere">Linked Text</span>
 	*/
 	$('body').on('click', '[data-href]', function() {
 		var linkedUrl = $(this).data('href');

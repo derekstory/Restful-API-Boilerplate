@@ -16,7 +16,7 @@ var dbOptions = {
 	host: 'localhost',
 	user: 'root',
 	password: 'password',
-	database: 'testing'
+	database: 'api'
 };
 var connection = mysql.createConnection(dbOptions);
 
