@@ -1,7 +1,7 @@
-var Backbone = require('backbone');
-var _ = require('lodash');
-var $ = require('jquery');
-var template = require('./navbar.handlebars');
+var Backbone = require('backbone'),
+	_ = require('lodash'),
+	$ = require('jquery'),
+	template = require('./navbar.handlebars');
 
 var Users = Backbone.Model.extend({
 	urlRoot: '/api/users'
@@ -32,9 +32,9 @@ var AppView = Backbone.View.extend({
 	},
 
 	signup: function() {
-		var username = this.navbar.find('input[type="text"]').val();
-		var password = this.navbar.find('input[type="password"]').val();
-		var newUser  = new Users({ "username": username, "password": password });
+		var username = this.navbar.find('input[type="text"]').val(),
+			password = this.navbar.find('input[type="password"]').val();
+			newUser  = new Users({ "username": username, "password": password });
 
 		if(username && password) {
 			newUser.save(null , {

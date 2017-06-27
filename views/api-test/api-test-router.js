@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
-var $ = require('jquery');
-var TestPage = require('./api-test');
-var sectionRender = require('../section-render');
+	$ = require('jquery'),
+	TestPage = require('./api-test'),
+	sectionRender = require('../section-render');
 
 var Router = Backbone.Router.extend({
 

@@ -1,7 +1,7 @@
-var Backbone = require('backbone');
-var $ = require('jquery');
-var HomePage = require('./home');
-var sectionRender = require('../section-render');
+var Backbone = require('backbone'),
+	$ = require('jquery'),
+	HomePage = require('./home'),
+	sectionRender = require('../section-render');
 
 var Router   = Backbone.Router.extend({
 

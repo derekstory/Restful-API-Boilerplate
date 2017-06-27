@@ -1,6 +1,6 @@
-var Backbone = require('backbone');
-var $ = require('jquery');
-var _ = require('lodash');
+var Backbone = require('backbone'),
+	$ = require('jquery'),
+	_ = require('lodash');
 
 var Section = function(options) {
 	this.options = options;

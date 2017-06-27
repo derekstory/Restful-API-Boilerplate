@@ -1,7 +1,7 @@
-var Backbone = require('backbone');
-var _ = require('lodash');
-var $ = require('jquery');
-var template = require('./home.handlebars');
+var Backbone = require('backbone'),
+	_ = require('lodash'),
+	$ = require('jquery'),
+	template = require('./home.handlebars');
 
 var TestModel = Backbone.Model.extend({
 	urlRoot: '/api/testmodel'
@@ -28,10 +28,10 @@ var AppView = Backbone.View.extend({
 	},
 
 	postTest: function(){
-		var input = $('input[name="test"]');
-		var value = input.val();
-		var name  = new TestModel({ "name": value });
-		var $this  = this;
+		var input = $('input[name="test"]'),
+			value = input.val(),
+			name  = new TestModel({ "name": value }),
+			$this  = this;
 
 		if(input.val()) {
 			name.save(null , {
@@ -48,8 +48,8 @@ var AppView = Backbone.View.extend({
 	},
 
 	deleteItem: function(e) {
-		var item = $(e.currentTarget).closest('li');
-		var itemId = item.data('id');
+		var item = $(e.currentTarget).closest('li'),
+			itemId = item.data('id');
 
 		$.delete('/api/testmodel/?id=' + itemId, function(e, d) {
 			item.remove();

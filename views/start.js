@@ -1,8 +1,8 @@
-var Backbone = require('backbone');
-var $ = require('jquery');
-var AppRouter = require('./app-router');
+var Backbone = require('backbone'),
+	$ = require('jquery');
+	AppRouter = require('./app-router');
 
 $(function() {
-	var appRouter = new AppRouter();
+	new AppRouter();
 	Backbone.history.start();
 });

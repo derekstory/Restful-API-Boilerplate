@@ -1,8 +1,8 @@
-var Backbone = require('backbone');
-var $ = require('jquery');
-var Navbar = require('./common/navbar');
-var HomeRouter    = require('./home/home-router');
-var ApiTestRouter = require('./api-test/api-test-router');
+var Backbone = require('backbone'),
+	$ = require('jquery'),
+	Navbar = require('./common/navbar'),
+	HomeRouter = require('./home/home-router'),
+	ApiTestRouter = require('./api-test/api-test-router');
 
 var AppRouter = Backbone.Router.extend({
 

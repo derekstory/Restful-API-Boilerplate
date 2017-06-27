@@ -1,7 +1,7 @@
 // Dependencies
-var express = require('express');
-var exphbs  = require('express-handlebars');
-var bodyParser = require('body-parser');
+var express = require('express'),
+	exphbs  = require('express-handlebars'),
+	bodyParser = require('body-parser');
 
 
 // Express

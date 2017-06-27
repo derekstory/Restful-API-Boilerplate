@@ -1,7 +1,7 @@
-var Backbone = require('backbone');
-var _ = require('lodash');
-var $ = require('jquery');
-var template = require('./api-test.handlebars');
+var Backbone = require('backbone'),
+	_ = require('lodash'),
+	$ = require('jquery'),
+	template = require('./api-test.handlebars');
 
 var AppView = Backbone.View.extend({
 
