@@ -10,25 +10,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-// MYSQL
-var mysql = require('mysql');
-var dbOptions = {
-	host: 'localhost',
-	user: 'root',
-	password: 'password',
-	database: 'api'
-};
-var connection = mysql.createConnection(dbOptions);
-
-connection.connect(function(err) {
-	if(err) {
-		console.log('Error connecting to MySql');
-	} else {
-		console.log('Connected to Mysql');
-	}
-});
-
-
 // Load the public directory files
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/build'));
@@ -48,7 +29,7 @@ app.get('/', function (req, res) {
 
 
 // Routes
-app.use('/api', require('./routes/api')({ db : connection }));
+app.use('/api', require('./routes/api'));
 
 // Start server
 app.listen(3000);
