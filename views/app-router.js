@@ -7,7 +7,9 @@ var Backbone = require('backbone'),
 var AppRouter = Backbone.Router.extend({
 
 	initialize: function() {
-		new Navbar();
+		$.get('/api/login', function(req) {
+			new Navbar(req);
+		});
 		new HomeRouter();
 		new ApiTestRouter();
 	},
