@@ -3,8 +3,12 @@ var Backbone = require('backbone'),
 	$ = require('jquery'),
 	template = require('./navbar.handlebars');
 
-var Users = Backbone.Model.extend({
-	urlRoot: '/api/users'
+var Login = Backbone.Model.extend({
+	urlRoot: '/api/login'
+});
+
+var Logout = Backbone.Model.extend({
+	urlRoot: '/api/logout'
 });
 
 var AppView = Backbone.View.extend({
@@ -16,8 +20,9 @@ var AppView = Backbone.View.extend({
 	},
 
 	render: function(){
-		this.navbar.empty().append(template());
-		this.navbar.find('button').on('click', this.signup.bind(this));
+		this.navbar.empty().append(template(this.options));
+		this.navbar.find('button').on('click', this.login.bind(this));
+		this.navbar.find('.logout').on('click', this.logout.bind(this));
 
 		// Listen for when a new section is rendered. The nav may need to change options
 		Backbone.Events.on("newSection", this.newSection.bind(this));
@@ -31,18 +36,27 @@ var AppView = Backbone.View.extend({
 		this.navbar.find('[data-section=' + section + ']').addClass('is-selected');
 	},
 
-	signup: function() {
+	login: function() {
 		var username = this.navbar.find('input[type="text"]').val(),
 			password = this.navbar.find('input[type="password"]').val();
-			newUser  = new Users({ "username": username, "password": password });
+			newUser  = new Login({ "username": username, "password": password });
 
 		if(username && password) {
 			newUser.save(null , {
-				success: function (newModel) {
-					console.log('New user created.');
+				success: function (req, res) {
+					console.log(req);
 				}
 			});
 		}
+	},
+
+	logout: function() {
+		var logout = new Logout();
+		logout.save(null, {
+			success: function(req, res) {
+				console.log('logged out');
+			}
+		});
 	}
 
 });
