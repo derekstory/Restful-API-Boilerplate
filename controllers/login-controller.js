@@ -13,7 +13,11 @@ module.exports = {
 			password = req.body.password;
 
 		pool.getConnection(function(err, connection) {
-			connection.query("SELECT username FROM users WHERE username = '" + username + "' AND password = '" + password + "'", function(err, user, test) {
+			var sqlQuery = "SELECT username " +
+						   "FROM users " +
+						   "WHERE username = '" + username + "' " +
+						   "AND password = '" + password + "'";
+			connection.query(sqlQuery, function(err, user) {
 				connection.release();
 				if(err) {
 					console.log('Error: ' + err);
@@ -26,7 +30,7 @@ module.exports = {
 				}
 
 				req.session.user = user;
-				res.send({ isLoggedIn: true, test: test });
+				res.send({ isLoggedIn: true });
 			});
 		});
 	}

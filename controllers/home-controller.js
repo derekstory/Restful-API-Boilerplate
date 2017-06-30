@@ -10,6 +10,7 @@ module.exports = {
 				if(err) {
 					console.log('Error: ' + err);
 				} else {
+					console.log(req.session.user);
 					res.send(rows);
 				}
 			});
