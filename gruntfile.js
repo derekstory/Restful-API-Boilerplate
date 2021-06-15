@@ -1,3 +1,5 @@
+const sass = require('node-sass');
+
 module.exports = function(grunt) {
 
 	require('load-grunt-tasks')(grunt);
@@ -40,6 +42,7 @@ module.exports = function(grunt) {
 		// SASS - compile into public/stylesheets
 		sass: {
 			options: {
+				implementation: sass,
 				sourceMap: true
 			},
 			dist: {
